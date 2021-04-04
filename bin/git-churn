@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Show frequency of change.
+#
+# Usage:
+#
+# git-churn [arguments]
+#
+# Examples:
+#
+# git churn
+# git churn src
+# git churn --since '1 month ago'
+#
+# These are all standard arguments to `git log`.
+#
+# Authors:
+#
+# – https://github.com/coreyhaines
+# – https://github.com/garybernhardt
+
+git log --all --find-renames --find-copies --name-only --format= "$@" | awk NF | sort | uniq -c | sort -n
